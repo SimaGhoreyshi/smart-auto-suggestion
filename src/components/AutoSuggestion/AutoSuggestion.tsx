@@ -1,19 +1,7 @@
 import React, { useState } from "react";
+
 import "./autosuggestion.css";
-
-interface IKeys {
-  categoryKey: string;
-  categoryTitle: string;
-  categoryOnClick: () => void;
-}
-
-export interface IAutoSuggestionProps<T> {
-  data: T[];
-  keys: IKeys[];
-  placeholder?: string;
-  onSelect: (item: T) => void;
-  minCharLength: number;
-}
+import { IAutoSuggestionProps } from "./AutoSuggestion.types";
 
 const AutoSuggestion = <T extends {}>({
   data,
@@ -64,10 +52,14 @@ const AutoSuggestion = <T extends {}>({
         onChange={handleInputChange}
         placeholder={placeholder}
       />
-      {Object.keys(suggestions).length
-        ? Object.keys(suggestions).map((suggestionKey) =>
+      {Object.keys(suggestions).length ? (
+        <div className="smart-autosuggestion-result">
+          {Object.keys(suggestions).map((suggestionKey) =>
             suggestions[suggestionKey].length ? (
-              <ul className="smart-autosuggestion-items ">
+              <ul
+                className={`smart-autosuggestion-result-items ${suggestionKey}`}
+                key={suggestionKey}
+              >
                 <li>
                   {
                     keys.filter((k) => k.categoryKey === suggestionKey)[0]
@@ -81,8 +73,9 @@ const AutoSuggestion = <T extends {}>({
                 ))}
               </ul>
             ) : null
-          )
-        : null}
+          )}
+        </div>
+      ) : null}
     </div>
   );
 };

@@ -2,7 +2,9 @@
 
 import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
-import AutoSuggestion, { IAutoSuggestionProps } from "./AutoSuggestion";
+
+import AutoSuggestion from "./AutoSuggestion";
+import { IAutoSuggestionProps } from "./AutoSuggestion.types";
 
 export default {
   title: "AutoSuggestion",
@@ -16,16 +18,17 @@ const Template: StoryFn<IAutoSuggestionProps<any>> = (args) => (
 export const Primary = Template.bind({});
 Primary.args = {
   data: [
-    { name: "John", age: 30 },
-    { name: "Jane", age: 25 },
-    { name: "Doe", age: 35 },
-    { name: "Doe2", age: 45 },
-    { name: "Doe3", age: 55 },
-    { name: "Doe4", age: 30 },
+    { title: "آبکش", color: "زرد", category: "ظروف" },
+    { title: "آبپاش", color: "قرمز", category: "باغبانی" },
+    { title: "قوری", color: "آبی", category: "ظروف" },
+    { title: "سبد", color: "سفید", category: "ظروف" },
+    { title: "گلدان", color: "سرخابی", category: "باغبانی" },
+    { title: "بشقاب", color: "آبی آسمانی", category: "ظروف" },
   ],
   keys: [
-    { categoryKey: "name", categoryTitle: "name" },
-    { categoryKey: "age", categoryTitle: "age" },
+    { categoryKey: "title", categoryTitle: "نام محصول" },
+    { categoryKey: "color", categoryTitle: "رنگ" },
+    { categoryKey: "category", categoryTitle: "دسته بندی" },
   ],
   placeholder: "Search...",
   onSelect: (item) => alert(JSON.stringify(item)),

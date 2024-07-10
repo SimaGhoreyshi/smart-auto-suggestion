@@ -11,13 +11,13 @@
   outline: none;
 }
 
-.smart-autosuggestion-items {
+.smart-autosuggestion-result-items {
   border-radius: 0.375rem;
   background-color: white;
   padding: 0.375rem;
   margin: 0;
 }
-.smart-autosuggestion-items li {
+.smart-autosuggestion-result-items li {
   width: 100%;
   list-style: none;
 }
